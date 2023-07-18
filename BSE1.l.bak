@@ -1,0 +1,22 @@
+/*binary sequence ending with 1*/
+
+%{
+#include<stdio.h>
+int e=0;
+%}
+
+%%
+^[01]*1$ {e++;}
+%%
+
+int yywrap(){}
+int main()
+{
+	yylex();
+	if(e!=0){
+		printf("binary seq ending with 1");
+	}
+	else
+		printf("binary seq not ending with 1");
+
+}

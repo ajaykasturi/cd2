@@ -1,0 +1,22 @@
+/*lex code to accept a valid integer and float value using lex program*/
+%{
+int valid_int=0,valid_float=0;
+%}
+
+%%
+^[-+]?[0-9]* {valid_int++;}
+^[-+]?[0-9]*[.][0-9]+$ {valid_float++;}
+.;
+%%
+int yywrap(){}
+int main()
+{
+yylex();
+if(valid_int!=0)
+	printf("valid integer number\n");
+else if(valid_float!=0)
+	printf("valid float number\n");
+else
+	printf("not valid integer/float number\n");
+return 0;
+}

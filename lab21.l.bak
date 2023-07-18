@@ -1,0 +1,25 @@
+/*find length of str starts with a and length 3*/
+
+%{
+#include<stdio.h>
+int length;
+int print(int);
+%}
+
+%%
+[A]+[A-Z a-z 0-9]+ {length=yyleng; print(length);}
+%%
+
+int yywrap(){};
+int main()
+{
+	yylex();
+	printf("length of str :%d",length);
+	return 0;
+}
+print (int length)
+{
+	if(length==3){
+		printf("\nstring u entered is %s",yytext);
+	}
+}

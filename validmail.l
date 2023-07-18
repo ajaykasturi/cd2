@@ -1,0 +1,17 @@
+/*lex code to valid the domain mail of rgukt*/
+%{
+int valid_e=0;
+%}
+%%
+[0-9][0-9]{6}"@rgukt.in" {valid_e++;}
+%%
+int yywrap(){}
+int main()
+{
+yylex();
+if(valid_e!=0)
+	printf("valid domain email id\n");
+else
+	printf("not valid domain email id\n");
+return 0;
+}

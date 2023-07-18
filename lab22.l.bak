@@ -1,0 +1,19 @@
+/* lex program to remove comments from the c file and copy on other file*/
+%{
+#include<stdio.h>
+#include<stdlib.h>
+%}
+
+%%
+\/\/(.*) {}
+\/\*(.*\n).*\*\/ {}
+%%
+
+int yywrap() {}
+int main()
+{
+yyin=fopen("input.c","r");
+yyout=fopen("output.c","w");
+yylex();
+return 0;
+}

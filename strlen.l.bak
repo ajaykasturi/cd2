@@ -1,0 +1,16 @@
+%{
+#include<stdio.h>
+#include<string.h>
+int len;
+%}
+
+%%
+[a-zA-Z0-9] {len=yyleng;}
+%%
+int yywrap(){}
+int main()
+{
+yylex();
+printf("pcount=%d ncount=%d",pcount,ncount);
+return 0;
+}

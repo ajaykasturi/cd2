@@ -1,0 +1,17 @@
+/*valid phone number*/
+%{
+int valid_num=0;
+%}
+%%
+[6-9][0-9]{9}"hello" {valid_num++;}
+%%
+int yywrap(){}
+int main()
+{
+yylex();
+if(valid_num!=0)
+	printf("valid mobile number\n");
+else
+	printf("not valid mobile number\n");
+return 0;
+}
