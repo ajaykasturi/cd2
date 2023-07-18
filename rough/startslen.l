@@ -1,0 +1,19 @@
+%{
+#include<stdio.h>
+int len;
+int print(int);
+%}
+
+%%
+[A]+[a-zA-Z0-9]* {len=yyleng; print(len);}
+%%
+
+int yywrap() {}
+void main(){
+	yylex();
+}
+print(int len){
+	if(len==3){
+		printf("\n%s str satisfies\n",yytext);
+	}
+}

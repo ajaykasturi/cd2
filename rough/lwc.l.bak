@@ -1,0 +1,18 @@
+%{
+#include<stdio.h>
+int ch=0,l=0,c=0,w=0,s=0,t=0;
+%}
+
+%%
+([ ]) {s++;}
+\t {t++;}
+\n {l++;}
+. {ch++; c++;}
+[a-zA-Z]* {w++;}
+%%
+
+yywrap() {}
+void main(){
+	yylex();
+	printf("lines: %d\nwords :%d\n spaces :%d\n tabs :%d\ncharacters :%d\n",l,w+ch,s,t,c);
+}
